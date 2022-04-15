@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --mode development --watch",
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development"
+    "start": "webpack-dev-server --mode development",
+    "json": "json-server --watch json/tasks.json"
   },
   "browserslist": [
     "last 5 versions"
@@ -18,10 +19,13 @@
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
     "@tsconfig/svelte": "^3.0.0",
+    "@types/jquery": "^3.5.14",
     "autoprefixer": "^10.4.4",
     "babel-loader": "^8.2.4",
     "css-loader": "^6.7.1",
     "cssnano": "^5.1.7",
+    "html-webpack-plugin": "^5.5.0",
+    "json-server": "^0.17.0",
     "mini-css-extract-plugin": "^2.6.0",
     "postcss": "^8.4.12",
     "postcss-loader": "^6.2.1",
@@ -36,5 +40,9 @@
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.8.1"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "remove": "^0.1.5"
   }
 }

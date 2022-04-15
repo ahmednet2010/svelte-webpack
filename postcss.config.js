@@ -5,7 +5,7 @@ module.exports = ({mode}) =>({
         require('cssnano')({
             preset: ["default", {
                 discardComments: {
-                    removeAll: true
+                    removeAll: mode === "production"
                 }
             }]
         })

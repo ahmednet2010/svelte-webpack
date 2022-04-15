@@ -7,12 +7,12 @@ module.exports = (env, {
     optimization: {
         "minimize": mode === 'development' ? false : true
     },
+    mode:mode,
     devtool: (mode === 'development' ? 'inline-source-map' : false),
-    entry: './src/App.ts',
+    entry: path.resolve(__dirname, "src/App.ts"),
     output: {
-        publicPath: 'public/**/*',
         filename: "assats/js/bundle.js",
-        path: path.resolve(__dirname, "public/")
+        path: path.resolve(__dirname, "public/"),
     },
     resolve: {
         alias: {
@@ -24,14 +24,14 @@ module.exports = (env, {
     module: {
         rules: [
         {
-            test: /\.svelte$/,
+            test: /\.svelte$/i,
             use: {
                 loader: 'svelte-loader',
                 options: {
+                emitCss :true,
                 compilerOptions: {
                     dev: (mode === 'development')
                 },
-                emitCss: (mode === 'production'),
                 hotReload: (mode === 'development'),
                 preprocess: preprocess({
                     postcss: true,
@@ -48,15 +48,14 @@ module.exports = (env, {
             }
         },
         {
-            test: /\.ts$/,
+            test: /\.t|js$/i,
             use: ["babel-loader","ts-loader"],
             exclude: /node_modules/,
             include: [path.resolve(__dirname, "src")]
         }, {
-            test: /\.scss$/,
+            test: /\.s?css$/i,
             use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader","sass-loader"],
             exclude: /node_modules/,
-            include: [path.resolve(__dirname, "src")]
         }],
     },
     plugins: [new MiniCssExtractPlugin({
@@ -65,11 +64,11 @@ module.exports = (env, {
     })],
     devServer: {
         static: {
-            directory: path.join(__dirname, 'public'),
+            directory: path.resolve(__dirname, 'public/'),
         },
-        historyApiFallback: true,
         compress: true,
-        port: 9000,
         hot: true,
+        open:true,
+        historyApiFallback: true,
     }
 })
