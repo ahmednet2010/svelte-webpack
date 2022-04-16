@@ -5,22 +5,27 @@
 	export	let deletDate:any;
 			let Tasks:any[];
 	setTimeout(() => {
-		getDate.done((a:any) => {
+		getDate().done((a:any) => {
 			Tasks = a;
 		})
 	}, 5000)
+	function sortEvent() {
+		getDate(true).done((a:any) => {
+			Tasks = a;
+		})
+	}
 	function addDateEvent(e:any){
 		e.preventDefault();
 		addDate(e).done((e:any)=> {
 			console.log(e);
-			getDate.done((a:any) => {
+			getDate().done((a:any) => {
 				Tasks = a;
 			})
 		})
 	}
 	function deletDateEvent(id:any){
 		deletDate(id).done(()=> {
-				getDate.done((a:any) => {
+				getDate().done((a:any) => {
 					Tasks = a;
 			})
 		})

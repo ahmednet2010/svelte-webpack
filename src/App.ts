@@ -5,7 +5,7 @@ import "./App.scss";
 const url = "http://localhost:3000/tasks";
 let app
 $(($:any)=>{
-	const getDate:{} =  $.ajax({url: url})
+	const getDate:{} =  (order=false) => $.ajax({url: `${url}${order? "?_sort=data":""}`})
 	const deletDate:{} = (i:number) =>$.ajax({url:`${url}/${i}`,method:"DELETE"})
 	const addDate:{} = (e:any) => $.ajax({
 		type:"POST",
