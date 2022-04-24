@@ -4,19 +4,29 @@ import App from './App.svelte';
 import "./App.scss";
 const url = "http://localhost:3000/tasks";
 let app
+interface Data {
+	id:number,
+	status:any[],
+	type:string,
+	task:string,
+	 data:string
+}
 $(($:any)=>{
 	const getDate:{} =  (order=false) => $.ajax({url: `${url}${order? "?_sort=data":""}`})
 	const deletDate:{} = (i:number) =>$.ajax({url:`${url}/${i}`,method:"DELETE"})
-	const addDate:{} = (e:any) => $.ajax({
+	const addDate:{} = (e:Data) => $.ajax({
 		type:"POST",
 		url:url,
 		data:{
-			id:Date.now(),
-			task:e.target["task"].value,
-			data:e.target["data"].value,
-			type:e.target["type"].value,
-		}
-	})
+			status:e.status,
+			type:e.type,
+			task:e.task,
+			data:e.data,
+			id:Date.now()
+		},
+		dataType:"json",
+		traditional:true
+	}).done((e:any) => console.log(e))
 	app = new App({
 		target: document.body,
 		props: {

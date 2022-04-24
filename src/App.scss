@@ -1,38 +1,122 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 *,
 *::after,
-*::before{
+*::before {
 	box-sizing: border-box;
 	outline: 0;
 	margin: 0;
 	padding: 0;
 	border: 0;
 }
-html,body
-{
+
+html,
+body {
 	min-height: 100%;
 	scroll-behavior: smooth;
 	font-size: 14px;
 }
+
 input,
 select {
 	@apply border-2 rounded-md border-solid border-cyan-700;
 	@apply text-gray-700 cursor-pointer;
 	@apply hover:border-lime-700
 }
-.skeleton{
+
+.skeleton {
 	animation: skeleton 1s infinite linear forwards reverse;
 	transform-origin: left;
 }
-@keyframes skeleton{
-	0%{
-		transform: scale(1,1);
+
+@keyframes skeleton {
+	0% {
+		transform: scale(1, 1);
 		@apply bg-slate-400;
 	}
-	100%{
+
+	100% {
 		@apply bg-slate-100;
-		transform: scale(0,1);
+		transform: scale(0, 1);
 	}
+}
+
+.job {
+	@apply bg-teal-600;
+}
+
+.home {
+	@apply bg-yellow-600;
+}
+
+.person {
+	@apply bg-green-600;
+}
+
+.notUrgent {
+	@apply bg-yellow-500;
+}
+
+.immediate {
+	@apply bg-blue-500;
+}
+
+.Important {
+	@apply bg-red-500;
+}
+
+.label-status {
+	position: relative;
+	overflow: hidden;
+
+	input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+		height: 0;
+		width: 0;
+
+		&:checked~.dot:after {
+			transform: rotate(45deg) scale(1);
+			transition: 0.5s;
+		}
+	}
+
+	&:hover .dot.immediate,
+	&>input:checked~.dot.immediate {
+		@apply bg-blue-500;
+	}
+	&:hover .dot.notUrgent,
+	&>input:checked~.dot.notUrgent {
+		@apply bg-yellow-500;
+	}
+	&:hover .dot.Important,
+	&>input:checked~.dot.Important {
+		@apply bg-red-500;
+	}
+}
+
+.dot {
+	position: relative;
+	width: 25px;
+	height: 25px;
+	@apply bg-slate-300;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.dot:after {
+	content: "";
+	position: absolute;
+	width: 10px;
+	height: 15px;
+	top: 5%;
+	left: 10%;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	transform: rotate(0) scale(0);
+	will-change: transform;
+	transform-origin: bottom;
 }

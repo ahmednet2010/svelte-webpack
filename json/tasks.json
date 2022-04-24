@@ -1,34 +1,44 @@
 {
   "Tasks": [
     {
-      "id": 1649864468089,
+      "id": "1650786560531",
       "task": "clean",
-      "data": "2022-04-21",
-      "type": "home"
+      "data": "2005-05-02",
+      "type": "job",
+      "status": [
+        "Important",
+        "notUrgent"
+      ]
     },
     {
-      "id": "1649956724267",
+      "status": [
+        "immediate",
+        "notUrgent"
+      ],
+      "type": "home",
+      "task": "work",
+      "data": "2022-05-25",
+      "id": "1650794146695"
+    },
+    {
+      "status": [
+        "Important",
+        "notUrgent"
+      ],
+      "type": "person",
+      "task": "watch",
+      "data": "2022-05-25",
+      "id": "1650794196585"
+    },
+    {
+      "status": [
+        "Important",
+        "immediate"
+      ],
+      "type": "person",
       "task": "shower",
-      "data": "2022-04-25",
-      "type": "person"
-    },
-    {
-      "id": "1650013568061",
-      "task": "watch a movie",
-      "data": "2022-05-22",
-      "type": "home"
-    },
-    {
-      "id": "1650013599323",
-      "task": "data entry",
-      "data": "2022-04-25",
-      "type": "job"
-    },
-    {
-      "id": "1650035148422",
-      "task": "eat",
-      "data": "2021-04-22",
-      "type": "job"
+      "data": "2021-04-21",
+      "id": "1650795538555"
     }
   ]
 }

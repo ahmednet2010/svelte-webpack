@@ -9,7 +9,7 @@ module.exports = (env, {
     },
     mode:mode,
     devtool: (mode === 'development' ? 'inline-source-map' : false),
-    entry: path.resolve(__dirname, "src/App.ts"),
+    entry: ["@babel/polyfill",path.resolve(__dirname, "src/App.ts")],
     output: {
         filename: "assats/js/bundle.js",
         path: path.resolve(__dirname, "public/"),
